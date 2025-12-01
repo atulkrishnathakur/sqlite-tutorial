@@ -1,11 +1,11 @@
-# Tutorial references
+## Tutorial references
 - https://www.sqlitetutorial.net/download-install-sqlite/
 
 ## SQLite officia website
 - https://www.sqlite.org 
 - https://www.sqlite.org/download.html
 
-# dowload and installation
+## dowload and installation
 - Download the zip file according to system like window,mac,linux etc.
 - Extract the zip file. Copy and paste extracted files in a directory.
 - Here we extracted sqlite in 'sqlite-tutorial/sqlite-tools' directory
@@ -19,8 +19,7 @@ atul@atul-Lenovo-G570:~/sqlite-tutorial/sqlite-tools$ tree
 
 ```
 
-# Run the sqlite
-
+## Run the sqlite
 - Go to 'sqlite-tutorial/sqlite-tools' directory and type `sqlite3`
 
 ```
@@ -33,8 +32,7 @@ sqlite>
 
 ```
 
-# See all sqlite commands
-
+## See all sqlite commands
 - type the `.help` command to see all commands
 
 ```
@@ -112,14 +110,19 @@ sqlite> .help
 .width NUM1 NUM2 ...     Set minimum column widths for columnar output
 sqlite> 
 ```
+## How to Quit sqlite
+- Type `.quit` command to quit sqlite prompt
+```
+sqlite> .quit
+```
 
-# How to install Graphical User Interface(GUI) 
+## How to install Graphical User Interface(GUI) 
 - Here we are using `SQLiteStudio`. you can check https://sqlitestudio.pl 
 - https://github.com/pawelsalawa/sqlitestudio/releases
 - Download the `sqlitestudio-3.4.17-linux-x64.tar.xz` for linux
 - Extract in a directory like `sqlite-tutorial/gui`
 
-# How to launch sqlitestudio
+## How to launch sqlitestudio
 - go to `sqlite-tutorial/gui/SQLiteStudio` directory.
 ```
 atul@atul-Lenovo-G570:~/sqlite-tutorial/gui/SQLiteStudio$ 
@@ -129,5 +132,125 @@ atul@atul-Lenovo-G570:~/sqlite-tutorial/gui/SQLiteStudio$
 atul@atul-Lenovo-G570:~/sqlite-tutorial/gui/SQLiteStudio$ ./sqlitestudio
 
 ```
+
+## Create database in sqlite
+### Method-1
+- Syntax to create database: `sqlite3 path/filename.db`
+```
+atul@atul-Lenovo-G570:~/sqlite-tutorial/sqlite-tools$ sqlite3 db/mydatabase.db
+```
+
+### Method-2
+- Connect sqlite first
+```
+atul@atul-Lenovo-G570:~/sqlite-tutorial/sqlite-tools$ sqlite3
+
+```
+- Type `.open path/filename.db` command to create database
+```
+sqlite> .open db/mydatabase4.db
+```
+
+## how to show databases
+- type `.databases` command to show database
+```
+sqlite> .databases
+main: /home/atul/sqlite-tutorial/sqlite-tools/db/mydatabase.db r/w
+
+```
+
+## How to connect database if already exist
+### method-1
+- Type command `sqlite3 path/filename.db`
+```
+atul@atul-Lenovo-G570:~/sqlite-tutorial/sqlite-tools$ sqlite3 db/mydatabase.db
+SQLite version 3.37.2 2022-01-06 13:25:41
+Enter ".help" for usage hints.
+sqlite> 
+```
+### method-2
+- Connect sqlite first
+```
+atul@atul-Lenovo-G570:~/sqlite-tutorial/sqlite-tools$ sqlite3
+
+```
+- Type `.open path/filename.db` command to connect existing database
+```
+sqlite> .open db/mydatabase.db
+```
+
+
+## How to use `filename.db` file that is already exist
+- Save `filename.db` file where you want
+- Connect sqlite first
+```
+atul@atul-Lenovo-G570:~/sqlite-tutorial/sqlite-tools$ sqlite3
+```
+
+- Type `.open path/filename.db` command to connect existing database
+```
+sqlite> .open db/mydatabase.db
+```
+
+
+## How to export sqlite database
+```
+sqlite> .output /home/atul/mydata/mysqlitedatadb.sql
+sqlite> .dump
+sqlite> .exit
+```
+
+## How to export a specific table of sqlite database
+```
+sqlite> .output /home/atul/mydata/mytable1.sql
+sqlite> .dump albums
+sqlite> .exit
+```
+
+## How to export tables structure only using schema command
+```
+sqlite> .output /home/atul/mydata/mytableschema1.sql
+sqlite> .schema
+sqlite> .exit
+```
+
+## How to import `filename.sql` to import in sqlite
+- Connect sqlite database tool
+```
+atul@atul-Lenovo-G570:~/sqlite-tutorial/sqlite-tools$ sqlite3
+```
+- Create database where need to import `filename.sql` in a database
+```
+sqlite> .open db/myimportdb.db
+```
+- import `filename.sql` by `.read path/filename.sql` command
+```
+sqlite> .read /home/atul/mydata/mytable1.sql
+```
+
+## How to execute sql statement in sqlite tool
+
+- Press `Enter` to start new line
+
+```
+sqlite> select *
+   ...> from albums
+   ...> order by id
+   ...> limit 3;
+```
+
+- Type semicolon(;) and press `Enter` at last to execute sql statement.
+
+## How to escape the `…>` in the middle of the sql statement
+
+- Suppose you are typing a query and want to escape the `…>` then you can enter a semicolon (;) and hit the `Enter` key.
+
+```
+sqlite> select *
+   ...> ;
+Error: in prepare, no tables specified (1)
+sqlite> 
+```
+
 
 
